@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # スライムテキストデータの配置場所
-TEXTDIR=$(dirname "${0}")"/.DQ"
+TEXTDIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)/.DQ"
 
 # ランダムで値を取得(0〜99の範囲)
 NUM=$((RANDOM % 256))
