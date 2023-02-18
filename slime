@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# スライムテキストデータの配置場所
+TEXTDIR=$(dirname "${0}")"/.DQ"
+
+# ランダムで値を取得(0〜99の範囲)
+NUM=$((RANDOM % 256))
+
+if [ $NUM -lt 50 ];
+then
+  cat "$TEXTDIR/slime.txt"
+elif [ $NUM -lt 100 ];
+then
+  cat "$TEXTDIR/slime-beth.txt"
+elif [ $NUM -lt 150 ];
+then
+  cat "$TEXTDIR/bubble-slime.txt"
+elif [ $NUM -lt 200 ];
+then
+  cat "$TEXTDIR/metal-slime.txt"
+elif [ $NUM -lt 253 ];
+then
+  cat "$TEXTDIR/hagure-metal.txt"
+elif [ $NUM -lt 254 ];
+then
+  cat "$TEXTDIR/slime-allstar.txt"
+elif [ $NUM -lt 255 ];
+then
+  cat "$TEXTDIR/dq2-allstar.txt"
+fi
