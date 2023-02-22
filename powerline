@@ -4,12 +4,12 @@ powerline() {
   clock=' '$(echo -e '\xE2\x97\xB4')' '
   ruler1=$(echo -e '\xE2\x94\x8C')
   apple=' '$(echo -e '\xef\xa3\xbf')' '
-  folder=$(echo -e '\xEE\xAA\x83')' '
+  folder=' '$(echo -e '\xEE\xAA\x83')' '
   r_ptr=$(echo -e '\xEE\x82\xB0')
   l_ptr=$(echo -e '\xee\x82\xb2\x0a')
   datetime=$(date '+%Y-%m-%d %H:%M')
   directory=${PWD/#$HOME/\~}''
-  branch_name=$(echo -e '\xEE\x9C\xA5')' '$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+  branch_name=' '$(echo -e '\xEE\x9C\xA5')' '$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
   echo -n "$(tput setaf 7)${ruler1}"
   echo -n "$(tput setaf 0)$(tput setab 27)$(tput bold)${apple}"
