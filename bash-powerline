@@ -11,6 +11,10 @@ powerline() {
   directory=${PWD/#$HOME/\~}''
   branch_name=' '$(echo -e '\xEE\x9C\xA5')' '$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
+  total_char=$((${#ruler1} + ${#apple} + ${#folder} + ${#clock} + ${#datetime} + ${#directory} + ${#branch_name} + ${#r_ptr}*4 + 1))
+
+  separator=$(($(tput cols) - ${#ruler1} - ${#apple} - ${#folder} - ${#clock} - ${#datetime} - ${#directory} - ${#branch_name} - ${#r_ptr}*4 - 1))
+
   echo -n "$(tput setaf 7)${ruler1}"
   echo -n "$(tput setaf 0)$(tput setab 27)$(tput bold)${apple}"
   echo -n "$(tput setaf 27)$(tput setab 32)${r_ptr}"
@@ -20,10 +24,17 @@ powerline() {
   echo -n "$(tput setaf 0)$(tput setab 37)${branch_name}"
   echo -n "$(tput setaf 37)$(tput setab 0)${r_ptr}"
   tput sgr0
-  tput cuf $(($(tput cols) - ${#ruler1} - ${#apple} - ${#folder} - ${#clock} - ${#datetime} - ${#directory} - ${#branch_name} - ${#r_ptr}*4 - 1))
-  echo -n "$(tput setaf 2)$(tput setab 0)$(tput bold)${l_ptr}"
-  echo -n "$(tput setaf 0)$(tput setab 2)${datetime}"
-  echo -n "$(tput setaf 0)$(tput setab 2)${clock}"
-  tput sgr0
+
+  if [ "$(tput cols)" -gt "$total_char" ]; then
+    tput cuf $separator
+    echo -n "$(tput setaf 2)$(tput setab 0)$(tput bold)${l_ptr}"
+    echo -n "$(tput setaf 0)$(tput setab 2)${datetime}"
+    echo -n "$(tput setaf 0)$(tput setab 2)${clock}"
+    tput sgr0
+  fi
 }
 PS1="\[\$(powerline)\]\n\$(echo -e '\xE2\x94\x94')\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;31m\]\h\[\e[0m\]\\$ "
+
+# ls colors
+export CLICOLOR=1
+export LSCOLORS=CxBxhxDxfxhxhxhxhxcxcx
