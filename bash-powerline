@@ -34,7 +34,3 @@ powerline() {
   fi
 }
 PS1="\[\$(powerline)\]\n\$(echo -e '\xE2\x94\x94')\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;31m\]\h\[\e[0m\]\\$ "
-
-# ls colors
-export CLICOLOR=1
-export LSCOLORS=CxBxhxDxfxhxhxhxhxcxcx
