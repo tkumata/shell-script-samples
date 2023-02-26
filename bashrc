@@ -3,7 +3,7 @@
 export EDITOR=nvim
 export VIEWER=less
 export CLICOLOR=1
-export LSCOLORS=CxBxhxDxfxhxhxhxhxcxcx
+export LSCOLORS=CxFxCxDxBxegedabagacad
 
 bind '"\e[A":history-search-backward'
 bind '"\e[0A":history-search-backward'
