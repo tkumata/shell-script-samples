@@ -1,36 +1,36 @@
 #!/bin/bash
 
-powerline() {
-  clock=' '$(echo -e '\xE2\x97\xB4')' '
-  ruler1=$(echo -e '\xE2\x94\x8C')
-  apple=' '$(echo -e '\xef\xa3\xbf')' '
-  folder=' '$(echo -e '\xEE\xAA\x83')' '
-  r_ptr=$(echo -e '\xEE\x82\xB0')
-  l_ptr=$(echo -e '\xee\x82\xb2\x0a')
-  datetime=$(date '+%Y-%m-%d %H:%M')
-  directory=${PWD/#$HOME/\~}''
-  branch_name=' '$(echo -e '\xEE\x9C\xA5')' '$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+bash_powerline() {
+  ruler1=$(echo -ne '\xE2\x94\x8C')
+  ruler2=$(echo -ne '\xe2\x94\x80')
+  apple=$(echo -n ' '; echo -ne '\xef\xa3\xbf'; echo -n ' ')
+  folder=$(echo -ne '\xEE\xAA\x83'; echo -n ' ')
+  directory=${PWD/#$HOME/\~}
+  branch_name="$(echo -ne '\xEE\x9C\xA5'; echo -n ' ')$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')"
+  r_ptr=$(echo -ne '\xEE\x82\xB0')
+  l_ptr=$(echo -ne '\xee\x82\xb2\x0a')
+  datetime="$(date '+%Y-%m-%d %H:%M')"
+  clock="$(echo -n ' '; echo -ne '\xE2\x97\xB4'; echo -n ' ')"
 
-  total_char=$((${#ruler1} + ${#apple} + ${#folder} + ${#clock} + ${#datetime} + ${#directory} + ${#branch_name} + ${#r_ptr}*4 + 1))
-
-  separator=$(($(tput cols) - ${#ruler1} - ${#apple} - ${#folder} - ${#clock} - ${#datetime} - ${#directory} - ${#branch_name} - ${#r_ptr}*4 - 1))
-
-  echo -n "$(tput setaf 7)${ruler1}"
-  echo -n "$(tput setaf 0)$(tput setab 27)$(tput bold)${apple}"
+  echo -n "$(tput setaf 7)${ruler1}${ruler2}"
+  echo -n "$(tput setab 27)${apple}"
   echo -n "$(tput setaf 27)$(tput setab 32)${r_ptr}"
   echo -n "$(tput setaf 7)$(tput setab 32)${folder}"
-  echo -n "$(tput setaf 7)$(tput setab 32)${directory}"
+  echo -n "$(tput setab 32)${directory}"
   echo -n "$(tput setaf 32)$(tput setab 37)${r_ptr}"
-  echo -n "$(tput setaf 0)$(tput setab 37)${branch_name}"
-  echo -n "$(tput setaf 37)$(tput setab 0)${r_ptr}"
-  tput sgr0
+  echo -n "$(tput setaf 7)$(tput setab 37)${branch_name}"
+  echo -n "$(tput sgr0)$(tput setaf 37)${r_ptr}"
+  echo -n "$(tput sgr0)"
+
+  total_char=$((${#ruler1}*2 + ${#apple} + ${#folder} + ${#clock} + ${#datetime} + ${#directory} + ${#branch_name} + ${#r_ptr}*4 + 1))
+
+  separator=$(($(tput cols) - ${#ruler1}*2 - ${#apple} - ${#folder} - ${#clock} - ${#datetime} - ${#directory} - ${#branch_name} - ${#r_ptr}*4 - 1))
 
   if [ "$(tput cols)" -gt "$total_char" ]; then
     tput cuf $separator
-    echo -n "$(tput setaf 2)$(tput setab 0)$(tput bold)${l_ptr}"
-    echo -n "$(tput setaf 0)$(tput setab 2)${datetime}"
-    echo -n "$(tput setaf 0)$(tput setab 2)${clock}"
-    tput sgr0
+    echo -n "$(tput setaf 2)${l_ptr}"
+    echo -n "$(tput setaf 7)$(tput setab 2)${datetime}${clock}"
+    echo -n "$(tput sgr0)"
   fi
 }
-PS1="\[\$(powerline)\]\n\$(echo -e '\xE2\x94\x94')\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;31m\]\h\[\e[0m\]\\$ "
+PS1="\[\$(bash_powerline)\]\n\$(echo -ne '\xE2\x94\x94')\$(echo -ne '\xe2\x94\x80')\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;31m\]\H\[\e[0m\]\\$ "

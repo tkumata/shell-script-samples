@@ -1,7 +1,6 @@
 # shell いろいろ
 
 ## bash でも powerline っぽい何かを使いたい
-![image](./images/Screenshot%202023-02-23%20at%208.59.49.png)
 
 はじめに Unicode character を表示できるように以下のフォントを導入します。ここはお好きなフォントに読み替えてください。私は SF Mono が好きなので、SF Mono と Nerd を統一した SFMono Nerd を使います。
 
@@ -11,7 +10,7 @@ brew install --cask epk/epk/font-sfmono-nerd-font
 
 後は `bash-powerline` をご参照ください。bash 3 と古いものですが、このようになります。ポイントは unicode を utf-8 の hex に変えることで bash 3 でも扱えるようにしています。今後は好きな文字に対応できるよう自動化しようと思います。
 
-![image](./images/Screenshot%202023-02-23%20at%209.17.23.png)
+![image](./images/Screen%20Shot%202023-02-26%20at%2011.22.03.png)
 
 ## mac の ls でも色をいじりたい
 Linux なら `dircolors -p > ~/.dircolors` して、`.dircolor` をいじればいいですが BSD 系 UNIX だとそうはいかないので以下を設定します。
