@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export EDITOR=nvim
+export EDITOR=vim
 export VIEWER=less
 export CLICOLOR=1
 export LSCOLORS=CxFxCxDxBxegedabagacad
