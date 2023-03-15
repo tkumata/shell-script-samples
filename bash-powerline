@@ -32,4 +32,9 @@ bash_powerline() {
     echo -n "$(tput sgr0)"
   fi
 }
-PS1="\[\$(bash_powerline)\]\n\$(echo -ne '\xE2\x94\x94'; echo -ne '\xe2\x94\x80')\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;31m\]\H\[\e[0m\]\\$ "
+
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+  PS1="\[\$(bash_powerline)\]\n\$(echo -ne '\xE2\x94\x94'; echo -ne '\xe2\x94\x80')\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;31m\]\H\[\e[0m\]\\$ "
+else
+  PS1="\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;31m\]\H\[\e[0m\]\\$ "
+fi
