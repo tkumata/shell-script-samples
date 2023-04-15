@@ -4,16 +4,9 @@ function common_linux {
   alias ls='ls -F --color=auto'
   alias grep='grep --color=auto'
   alias free='free -h -l -t'
-  alias df='df -H'
-  alias du='du -ch'
 
-  # get top process eating memory
-  alias psmem='ps auxf | sort -nr -k 4'
-  alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-
-  # get top process eating cpu
-  alias pscpu='ps auxf | sort -nr -k 3'
-  alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+  # Get server cpu info
+  alias cpuinfo='lscpu'
 
   # older system use /proc/cpuinfo
   alias cpuproc='cat /proc/cpuinfo'
@@ -27,9 +20,6 @@ function redhat {
 # Debian system
 function debian {
   alias pkg-update='sudo apt -y update && sudo apt upgrade'
-
-  # Get server cpu info
-  alias cpuinfo='lscpu'
 }
 
 # Mac
@@ -63,7 +53,20 @@ esac
 # common, BSD system / RedHat system / Debian system
 export EDITOR=vim
 export VIEWER=less
+
 bind '"\e[A":history-search-backward'
 bind '"\e[0A":history-search-backward'
 bind '"\e[B":history-search-forward'
 bind '"\e[0B":history-search-forward'
+
+# get storage remaining
+alias df='df -H'
+alias du='du -ch'
+
+# get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+
+# get top process eating cpu
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
