@@ -27,7 +27,7 @@ function redhat {
 
 # Debian system
 function debian {
-  alias pkg-update='sudo apt -y update && sudo apt upgrade'
+  alias pkg-update='sudo apt -y update && sudo apt upgrade && sudo apt autoremove'
 }
 
 # Mac
