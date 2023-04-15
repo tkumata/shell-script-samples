@@ -53,6 +53,7 @@ case "${unameOut}" in
   *)          echo "Unknown"
 esac
 
+# common, BSD system / Fedora system / Debian system
 export EDITOR=vim
 export VIEWER=less
 bind '"\e[A":history-search-backward'
