@@ -1,15 +1,5 @@
 #!/bin/bash
 
-function linux {
-  common_linux
-
-  if [ -n "$(command -v yum)" ]; then
-    fedora
-  elif [ -n "$(command -v apt)" ]; then
-    debian
-  fi
-}
-
 function common_linux {
   alias ls='ls -F --color=auto'
   alias grep='grep --color=auto'
@@ -29,10 +19,12 @@ function common_linux {
   alias cpuproc='cat /proc/cpuinfo'
 }
 
-function fedora {
+# RedHat system
+function redhat {
   alias pkg-update='sudo yum update && sudo yum upgrade'
 }
 
+# Debian system
 function debian {
   alias pkg-update='sudo apt -y update && sudo apt upgrade'
 
@@ -40,12 +32,25 @@ function debian {
   alias cpuinfo='lscpu'
 }
 
+# Mac
 function mac {
   export CLICOLOR=1
   export LSCOLORS=CxFxCxDxBxegedabagacad
   alias ls='ls -FG'
 }
 
+# Detect Linux
+function linux {
+  common_linux
+
+  if [ -n "$(command -v yum)" ]; then
+    redhat
+  elif [ -n "$(command -v apt)" ]; then
+    debian
+  fi
+}
+
+# Detect OS
 unameOut="$(uname -s)"
 case "${unameOut}" in
   Linux*)     linux;;
@@ -53,7 +58,7 @@ case "${unameOut}" in
   *)          echo "Unknown"
 esac
 
-# common, BSD system / Fedora system / Debian system
+# common, BSD system / RedHat system / Debian system
 export EDITOR=vim
 export VIEWER=less
 bind '"\e[A":history-search-backward'
