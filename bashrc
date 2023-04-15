@@ -30,11 +30,11 @@ function common_linux {
 }
 
 function fedora {
-  alias update='sudo yum update && sudo yum upgrade'
+  alias pkg-update='sudo yum update && sudo yum upgrade'
 }
 
 function debian {
-  alias raspi-update='sudo apt -y update && sudo apt upgrade'
+  alias pkg-update='sudo apt -y update && sudo apt upgrade'
 
   # Get server cpu info
   alias cpuinfo='lscpu'
