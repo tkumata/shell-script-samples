@@ -37,6 +37,8 @@ function mac {
   export CLICOLOR=1
   export LSCOLORS=CxFxCxDxBxegedabagacad
   alias ls='ls -FG'
+  alias pkg-update='brew update && brew upgrade'
+  alias clean-brew='brew cleanup; brew cleanup --prune 7; brew autoremove'
 }
 
 # Detect Linux
