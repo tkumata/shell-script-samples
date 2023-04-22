@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+#
+#
 
 function common_linux {
   alias ls='ls -F --color=auto'
@@ -27,19 +30,27 @@ function redhat {
 
 # Debian system
 function debian {
-  alias pkg-update='sudo apt -y update && sudo apt upgrade && sudo apt autoremove'
+  alias pkg-update='sudo apt -y update && sudo apt upgrade'
+  alias pkg-clean='sudo apt -y autoclean && sudo apt -y autoremove'
+}
+
+# Raspberry Pi
+function raspberrypi {
+  alias gputemp='vcgencmd measure_temp'
+  alias cputemp='cat /sys/class/thermal/thermal_zone0/temp'
 }
 
 # Mac
 function mac {
   export CLICOLOR=1
   export LSCOLORS=CxFxCxDxBxegedabagacad
+
   alias ls='ls -FG'
   alias brew-update='brew update && brew upgrade'
   alias brew-clean='brew cleanup && brew cleanup --prune 7 && brew autoremove'
 }
 
-# Detect Linux
+# Detect Linux distribution
 function linux {
   common_linux
 
@@ -47,6 +58,10 @@ function linux {
     redhat
   elif [ -n "$(command -v apt)" ]; then
     debian
+  fi
+
+  if [ -n "$(command -v vcgencmd)" ]; then
+    raspberrypi
   fi
 }
 
