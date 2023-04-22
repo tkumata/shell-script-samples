@@ -51,3 +51,5 @@ export LSCOLORS=CxBxhxDxfxhxhxhxhxcxcx
 # G Bold Cyan
 # H Bold Grey
 ```
+
+## OS に合わせて alias を設定したい
