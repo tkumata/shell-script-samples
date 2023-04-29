@@ -48,6 +48,9 @@ function mac {
   alias ls='ls -FG'
   alias brew-update='brew update && brew upgrade'
   alias brew-clean='brew cleanup && brew cleanup --prune 7 && brew autoremove'
+  alias brew-leaves='brew leaves'
+  alias sim='open -a Simulator'
+  alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
 }
 
 # Detect Linux distribution
@@ -74,9 +77,9 @@ case "${unameOut}" in
 esac
 
 
-##################
+###################
 # common settings
-##################
+###################
 export EDITOR=vim
 export VIEWER=less
 
