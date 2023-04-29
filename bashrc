@@ -73,10 +73,20 @@ case "${unameOut}" in
   *)          echo "Unknown"
 esac
 
-# common, BSD system / RedHat system / Debian system
+
+##################
+# common settings
+##################
 export EDITOR=vim
 export VIEWER=less
 
+# golang
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export GOPATH="$GOROOT/bin"
+
+# key bindings
 bind '"\e[A":history-search-backward'
 bind '"\e[0A":history-search-backward'
 bind '"\e[B":history-search-forward'
