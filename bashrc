@@ -48,9 +48,13 @@ function mac {
   alias ls='ls -FG'
   alias pkg-update='brew update && brew upgrade'
   alias pkg-clean='brew cleanup && brew cleanup --prune 7 && brew autoremove'
+  alias brewsl='brew services list'
+  alias brewlv='brew leaves'
   alias sim='open -a Simulator'
-  alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
-  alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+  alias reset-pad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
+  alias reset-show='defaults write com.apple.dock show-recent-count -int 3; killall Dock'
+  alias reset-dock='defaults delete com.apple.dock; killall Dock'
+  alias reset-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 }
 
 # Detect Linux distribution
