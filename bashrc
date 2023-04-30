@@ -46,9 +46,8 @@ function mac {
   export LSCOLORS=CxFxCxDxBxegedabagacad
 
   alias ls='ls -FG'
-  alias brew-update='brew update && brew upgrade'
-  alias brew-clean='brew cleanup && brew cleanup --prune 7 && brew autoremove'
-  alias brew-leaves='brew leaves'
+  alias pkg-update='brew update && brew upgrade'
+  alias pkg-clean='brew cleanup && brew cleanup --prune 7 && brew autoremove'
   alias sim='open -a Simulator'
   alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
 }
@@ -59,7 +58,9 @@ function linux {
 
   if [ -n "$(command -v yum)" ]; then
     redhat
-  elif [ -n "$(command -v apt)" ]; then
+  fi
+
+  if [ -n "$(command -v apt)" ]; then
     debian
   fi
 
