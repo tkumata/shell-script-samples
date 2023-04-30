@@ -50,6 +50,7 @@ function mac {
   alias pkg-clean='brew cleanup && brew cleanup --prune 7 && brew autoremove'
   alias sim='open -a Simulator'
   alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
+  alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 }
 
 # Detect Linux distribution
