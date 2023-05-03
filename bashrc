@@ -51,7 +51,7 @@ function debian {
 function raspberrypi {
   alias gputemp='vcgencmd measure_temp'
   alias cputemp='cat /sys/class/thermal/thermal_zone0/temp'
-  alias goenvup='cd ~/.goenv && git fetch --all && git pull'
+  alias goenvup='cd ~/.goenv && git fetch --all && git pull && cd'
 }
 
 # Mac
