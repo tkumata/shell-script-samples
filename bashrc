@@ -1,6 +1,19 @@
 #!/bin/bash
 #
+# I want to share common config on every my devices in my environments that my
+# home PCs and my company PCs.
+# If you use this, add following line in your .bashrc.
 #
+# source $HOME/<place of git clone>/bashrc
+#
+# eg
+# cd ~/Developer
+# git clone git@github.com:tkumata/shell-script-samples.git
+# vi ~/.bashrc
+# ---
+# source $HOME/shell-script-samples/bashrc
+# ---
+# Then save.
 #
 
 function common_linux {
@@ -16,7 +29,7 @@ function common_linux {
   alias pscpu='ps auxf | sort -nr -k 3'
   alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
-  # Get server cpu info
+  # get server cpu info
   alias cpuinfo='lscpu'
 
   # older system use /proc/cpuinfo
@@ -38,6 +51,7 @@ function debian {
 function raspberrypi {
   alias gputemp='vcgencmd measure_temp'
   alias cputemp='cat /sys/class/thermal/thermal_zone0/temp'
+  alias goenvup='cd ~/.goenv && git fetch --all && git pull'
 }
 
 # Mac
@@ -93,7 +107,8 @@ export VIEWER=less
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
-export GOPATH="$GOROOT/bin"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 
 # key bindings
 bind '"\e[A":history-search-backward'
