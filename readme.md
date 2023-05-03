@@ -51,3 +51,6 @@ export LSCOLORS=CxBxhxDxfxhxhxhxhxcxcx
 # G Bold Cyan
 # H Bold Grey
 ```
+
+## OS に合わせて alias を設定したい
+本当のコマンドを忘れてしまうので alias は設定したくないけど、それでもやはり設定すると楽なので設定する。
