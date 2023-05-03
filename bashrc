@@ -1,19 +1,11 @@
 #!/bin/bash
 #
-# I want to share common config on every my devices in my environments that my
-# home PCs and my company PCs.
-# If you use this, add following line in your .bashrc.
-#
-# source $HOME/<place of git clone>/bashrc
-#
-# eg
 # cd ~/Developer
 # git clone git@github.com:tkumata/shell-script-samples.git
 # vi ~/.bashrc
 # ---
 # source $HOME/shell-script-samples/bashrc
 # ---
-# Then save.
 #
 
 function common_linux {
