@@ -96,11 +96,25 @@ export EDITOR=vim
 export VIEWER=less
 
 # golang
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
+if [ -n "$(command -v goenv)" ]; then
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  eval "$(goenv init -)"
+  export PATH="$GOROOT/bin:$PATH"
+  export PATH="$PATH:$GOPATH/bin"
+fi
+
+# pyenv
+if [ -n "$(command -v pyenv)" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
+# completes host name when using ssh
+if [ -f "$HOME/.ssh/config" ]; then
+  complete -W "$(<~/.ssh/config)" ssh
+fi
 
 # key bindings
 bind '"\e[A":history-search-backward'
