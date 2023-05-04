@@ -10,7 +10,6 @@
 
 function common_linux {
   alias ls='ls -F --color=auto'
-  alias grep='grep --color=auto'
   alias free='free -h -l -t'
 
   # get top process eating memory
@@ -83,11 +82,10 @@ function linux {
 # Detect OS
 unameOut="$(uname -s)"
 case "${unameOut}" in
-  Linux*)     linux;;
-  Darwin*)    mac;;
-  *)          echo "Unknown"
+Linux*) linux ;;
+Darwin*) mac ;;
+*) echo "Unknown" ;;
 esac
-
 
 ###################
 # common settings
@@ -96,18 +94,19 @@ export EDITOR=vim
 export VIEWER=less
 
 # golang
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
 if [ -n "$(command -v goenv)" ]; then
-  export GOENV_ROOT="$HOME/.goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
 fi
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+export GO111MODULE=on
 
 # pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 if [ -n "$(command -v pyenv)" ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi
 
@@ -125,3 +124,4 @@ bind '"\e[0B":history-search-forward'
 # get storage remaining
 alias df='df -H'
 alias du='du -ch'
+alias grep='grep --color=auto'
