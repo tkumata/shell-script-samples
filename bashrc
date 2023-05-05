@@ -25,6 +25,9 @@ function common_linux {
 
   # older system use /proc/cpuinfo
   alias cpuproc='cat /proc/cpuinfo'
+
+  # pip update
+  alias pip-update='sudo pip-review --auto'
 }
 
 # RedHat system
@@ -93,7 +96,7 @@ esac
 export EDITOR=vim
 export VIEWER=less
 
-# golang
+# goenv
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 if [ -n "$(command -v goenv)" ]; then
